@@ -1,0 +1,13 @@
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: hsl(254, 49%, 48%);
+    height: 90px;
+    color: rgb(201, 206, 245);
+}
+
+.footer-container span {
+    font-size: 18px;
+    font-weight: bold;
+}

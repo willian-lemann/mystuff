@@ -1,0 +1,55 @@
+.itemImage {
+    height: 300px;
+    width: 50%;
+    background: linear-gradient(45deg, white, #f0f0f0);
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    list-style: none;
+}
+
+section {
+    height: 200px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+section p {
+    margin-bottom: 10px;
+}
+
+section button {
+    margin-top: 10px;
+    border: 0;
+    background: #7159c1;
+    height: 50px;
+    width: 300px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.trashIcon {
+    position: relative;
+    background-color: #f0f0f0;
+    color: #f05a5b;
+    width: 60px;
+    top: -40px;
+    left: 90%;
+    outline: none;
+    transition: 0.3s background;
+}
+
+.trashIcon:hover {
+    background: #f05a5b;
+    color: white;
+}

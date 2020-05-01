@@ -14,7 +14,7 @@ function Login() {
 
     return (
         <div className="login-container">
-            <img src={backgroundImage} />
+            <img src={backgroundImage} alt="Background login" />
             <section className="form-container">
                 <form onSubmit={handleSubmit}>
                     <input

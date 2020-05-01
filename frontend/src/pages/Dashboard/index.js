@@ -1,40 +1,67 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaHeart } from 'react-icons/fa';
+import React, {
+    useEffect,
+    useState,
+} from 'react';
+
+import Pagination from 'react-js-pagination';
+
 import './index.css';
 
-import travelImage from '../../assets/viagem-foto.jpg';
-import Logo from '../../assets/ecommerce-logo.png';
+import { images } from '../../services/api';
+
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import ShopCard from '../../components/ShopCard';
 
 
 
 function Dashboard() {
+    const [photos, setPhotos] = useState([]);
+    const [page, setPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(0);
+
+    const handlePageChange = (pageNumber) =>
+        setPage(pageNumber);
+
+    useEffect(() => {
+        const loadData = async () => {
+            const response = await images.get('/photos', {
+                params: {
+                    page: page,
+                    client_id: '2d888541fe80477a46b3c0888a8866a5c3fe7dcc3470346a633a2a6478990956'
+                }
+            });
+         
+            setPhotos(response.data);
+            setTotalPage(parseInt(response.headers['x-total']))
+        }
+
+        loadData();
+    }, [page]);
+
     return (
-        <div className="app">
-            <header className="header-container">
-                <nav>
-                    <img src={Logo} />
-                    <ul>
-                        <Link to="/products" className="navlist">Products</Link>
-                        <Link to="/contacts" className="navlist">Contacts</Link>
-                    </ul>
-                </nav>
-            </header>
-
+        <div className="dashboard-container">
+            <Header />
             <main className="main-container">
-                <img src={travelImage} />
-                <section className="article-container">
-                    <strong>Viagem</strong>
-                    <p>A melhor viagem da sua vida está de braços aberto para você.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus et, architecto corporis blanditiis
-                    eius quas! Harum, odio deleniti, quibusdam, impedit consequuntur voluptate vitae provident fugit debitis
-                optio mollitia eaque porro.</p>
-                </section>
+                {photos.map(photo =>
+                    <ShopCard
+                        key={photo.id}
+                        photo={photo}
+                        className="shopCard"
+                    />)}
             </main>
-
-            <footer className="footer-container">
-                <span>Made with love <FaHeart /> by Willian Lemann</span>
-            </footer>
+            <Pagination
+                hideDisabled
+                innerClass="pagination"
+                itemClass="itemclass"
+                activeClass="active"
+                activeLinkClass="activeLinkClass"
+                activePage={page}
+                onChange={handlePageChange}
+                pageRangeDisplayed={10}
+                totalItemsCount={totalPage}
+            />
+            <Footer />
         </div >
     );
 }

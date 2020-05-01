@@ -1,0 +1,41 @@
+.card {
+    width: 300px;
+    height: 380px;
+    max-height: 300px;
+    margin-bottom: 80px;
+    background: #f0f0f0;
+    border: 0;
+}
+
+.CardImage {
+    max-height: 300px;
+    max-width: 300px;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.CardBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.CardBody button {
+    border: 0;
+    height: 40px;
+    width: 300px;
+    max-width: 300px;
+    border-radius: 8px;
+    background: #7159c1;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f0f0f0;
+    outline: none;
+    transition: 0.3s background;
+}
+
+.CardBody button:hover {
+    background: #9a8bc4;
+}

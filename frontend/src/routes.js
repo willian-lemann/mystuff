@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from '../src/pages/Login';
 import Dashboard from '../src/pages/Dashboard';
 import Products from '../src/pages/Products';
-import Contacts from '../src/pages/Contacts';
+import Cart from './pages/Cart';
 
 function Routes() {
     return (
@@ -13,7 +13,7 @@ function Routes() {
                 <Route path="/" exact component={Login} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/products" component={Products} />
-                <Route path="/contacts" component={Contacts} />
+                <Route path="/cart" component={Cart} />
             </Switch>
         </BrowserRouter>
     );
